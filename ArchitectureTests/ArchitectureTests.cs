@@ -35,8 +35,7 @@ public class ArchitectureTests
     public void HandlersShouldOnlyResideInApplicationLayer()
     {
         var result = Types.InAssemblies(_getAssembliesUnderTest())
-            .That().DoNotResideInNamespaceStartingWith("Jetbrains")
-            .And().HaveNameEndingWith("Handler")
+            .That().HaveNameEndingWith("Handler")
             .Should().ResideInNamespaceMatching("Application")
             .GetResult();
         
@@ -47,8 +46,7 @@ public class ArchitectureTests
     public void CommandsShouldOnlyResideInApplicationLayer()
     {
         var result = Types.InAssemblies(_getAssembliesUnderTest())
-            .That().DoNotResideInNamespaceStartingWith("Jetbrains")
-            .And().HaveNameEndingWith("Commands")
+            .That().HaveNameEndingWith("Commands")
             .Should().ResideInNamespaceMatching("Application")
             .GetResult();
         
@@ -59,8 +57,7 @@ public class ArchitectureTests
     public void ControllersShouldOnlyResideInInfrastructureLayer()
     {
         var result = Types.InAssemblies(_getAssembliesUnderTest())
-            .That().DoNotResideInNamespaceStartingWith("Jetbrains")
-            .And().HaveNameEndingWith("Controller")
+            .That().HaveNameEndingWith("Controller")
             .Should().ResideInNamespaceMatching("Infrastructure")
             .GetResult();
         
@@ -71,8 +68,7 @@ public class ArchitectureTests
     public void ControllersShouldInheritBaseController()
     {
         var result = Types.InAssemblies(_getAssembliesUnderTest())
-            .That().DoNotResideInNamespaceStartingWith("Jetbrains")
-            .And().HaveNameEndingWith("Controller")
+            .That().HaveNameEndingWith("Controller")
             .And().DoNotHaveNameStartingWith("Base")
             .Should().Inherit(typeof(BaseController))
             .GetResult();

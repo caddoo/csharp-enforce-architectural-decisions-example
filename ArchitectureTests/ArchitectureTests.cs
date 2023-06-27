@@ -21,7 +21,7 @@ public class ArchitectureTests
     }
     
     [Fact]
-    public void ApplicationLayerCantDependOInfrastructureLayer()
+    public void ApplicationLayerCantDependOnInfrastructureLayer()
     {
         var result = Types.InAssembly(typeof(EggHandler).Assembly)
             .ShouldNot()

@@ -17,7 +17,7 @@ public class ArchitectureTests
             .And().NotHaveDependencyOn("Infrastructure")
             .GetResult();
         
-        Assert.True(result.IsSuccessful);
+        Assert.True(result.IsSuccessful, String.Join(",", result.FailingTypes));
     }
     
     [Fact]
@@ -28,7 +28,7 @@ public class ArchitectureTests
             .HaveDependencyOn("Infrastructure")
             .GetResult();
         
-        Assert.True(result.IsSuccessful);
+        Assert.True(result.IsSuccessful, String.Join(",", result.FailingTypes));
     }
     
     [Fact]
@@ -39,7 +39,7 @@ public class ArchitectureTests
             .Should().ResideInNamespaceMatching("Application")
             .GetResult();
         
-        Assert.True(result.IsSuccessful);
+        Assert.True(result.IsSuccessful, String.Join(",", result.FailingTypes));
     }
     
     [Fact]
@@ -50,7 +50,7 @@ public class ArchitectureTests
             .Should().ResideInNamespaceMatching("Application")
             .GetResult();
         
-        Assert.True(result.IsSuccessful);
+        Assert.True(result.IsSuccessful, String.Join(",", result.FailingTypes));
     }
     
     [Fact]
@@ -61,7 +61,7 @@ public class ArchitectureTests
             .Should().ResideInNamespaceMatching("Infrastructure")
             .GetResult();
         
-        Assert.True(result.IsSuccessful);
+        Assert.True(result.IsSuccessful, String.Join(",", result.FailingTypes));
     }
     
     [Fact]
@@ -73,7 +73,7 @@ public class ArchitectureTests
             .Should().Inherit(typeof(BaseController))
             .GetResult();
         
-        Assert.True(result.IsSuccessful);
+        Assert.True(result.IsSuccessful, String.Join(",", result.FailingTypes));
     }
 
     private IEnumerable<Assembly> _getAssembliesUnderTest()
